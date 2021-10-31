@@ -14,7 +14,9 @@ const queries = {
   findAllEmployee: () => {
     return connection
       .promise()
-      .query("SELECT first_name, last_name, role_id, manager_id FROM employee");
+      .query(
+        "SELECT id, first_name, last_name, role_id, manager_id FROM employee"
+      );
   },
 
   addDepartment: (department) => {
