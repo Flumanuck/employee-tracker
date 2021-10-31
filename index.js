@@ -43,6 +43,14 @@ function userInput() {
             value: "Delete_Employee",
           },
           {
+            name: "Delete A Role",
+            value: "Delete_Role",
+          },
+          {
+            name: "Delete A Department",
+            value: "Delete_Department",
+          },
+          {
             name: "Nothing",
             value: "End",
           },
@@ -75,6 +83,12 @@ function userInput() {
           break;
         case "Delete_Employee":
           deleteEmployee();
+          break;
+        case "Delete_Role":
+          deleteRole();
+          break;
+        case "Delete_Department":
+          deleteDepartment();
           break;
         case "End":
           endFunction();
@@ -239,5 +253,35 @@ function deleteEmployee() {
     .then((response) => {
       const { idChoice } = response;
       db.deleteEmployee(idChoice).then(viewEmployees());
+    });
+}
+
+function deleteRole() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "idChoice",
+        message: "What is the id of the role you want to delete?",
+      },
+    ])
+    .then((response) => {
+      const { idChoice } = response;
+      db.deleteRole(idChoice).then(viewRoles());
+    });
+}
+
+function deleteDepartment() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "idChoice",
+        message: "What is the id of the department you want to delete?",
+      },
+    ])
+    .then((response) => {
+      const { idChoice } = response;
+      db.deleteDepartment(idChoice).then(viewDepartments());
     });
 }

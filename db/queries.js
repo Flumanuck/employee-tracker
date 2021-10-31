@@ -50,6 +50,16 @@ const queries = {
   deleteEmployee: (id) => {
     return connection.promise().query(`DELETE FROM employee WHERE id = ${id}`);
   },
+
+  deleteRole: (id) => {
+    return connection.promise().query(`DELETE FROM role WHERE id = ${id}`);
+  },
+
+  deleteDepartment: (id) => {
+    return connection
+      .promise()
+      .query(`DELETE FROM department WHERE id = ${id}`);
+  },
 };
 
 module.exports = queries;
